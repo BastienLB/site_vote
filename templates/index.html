@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+{% for image in images %}
+    <img src="{{ url_for('static', path=image.filename) }}" height="300px"> <br>
+    votes: {{ image.voted_by|length }} <br>
+    <a href="{{ url }}/{{ image.id }}">voter</a>
+
+    <br><br>
+{% endfor %}
+</body>
+</html>
