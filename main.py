@@ -47,7 +47,7 @@ async def startup_event(db: Session = get_db()):
 @app.get("/")
 async def root(request: Request, db: Session = Depends(get_db)):
     domain = os.getenv("DOMAIN") if os.getenv("DOMAIN") is not None else "127.0.0.1:8000"
-    url = f"http://{domain}"
+    url = f"http://{domain}/vote"
     images = operations.get_images(db)
     users = db.query(models.User).all()
 
@@ -60,7 +60,7 @@ async def root(request: Request, db: Session = Depends(get_db)):
     return templates.TemplateResponse("index.html", {"request": request, "images": images, "url": url})
 
 
-@app.get("/{image_id}")
+@app.get("/vote/{image_id}")
 async def add_user_vote(image_id, request: Request, db: Session = Depends(get_db)):
     if not operations.check_if_user_exists(db, request.client.host):
         user = operations.register_user(db, schemas.UserCreate(ip=request.client.host))
