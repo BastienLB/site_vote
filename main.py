@@ -49,13 +49,6 @@ async def root(request: Request, db: Session = Depends(get_db)):
     domain = os.getenv("DOMAIN") if os.getenv("DOMAIN") is not None else "127.0.0.1:8000"
     url = f"http://{domain}/vote"
     images = operations.get_images(db)
-    users = db.query(models.User).all()
-
-    for user in users:
-        print(user.ip)
-
-    for image in images:
-        print(f"{image.filename} : {len(image.voted_by)}")
 
     return templates.TemplateResponse("index.html", {"request": request, "images": images, "url": url})
 
