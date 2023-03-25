@@ -22,12 +22,16 @@
                     <img src="{{ url_for('static', path=image.filename) }}" height="300px"> <br>
                 </div>
             </div>
-            <div class="row align-text-center">
+            <div class="row">
                 <div class="col text-end">
-                    votes: {{ image.voted_by|length }}
+                    <div class="container">
+                        votes: {{ image.voted_by|length }}
+                    </div>
                 </div>
                 <div class="col text-start">
-                    <a href="{{ url }}/{{ image.id }}" class="btn btn-success">voter</a>
+                    <div class="container">
+                        <a href="{{ url }}/{{ image.id }}" class="btn btn-success">voter</a>
+                    </div>
                 </div>
             </div>
         </div>
