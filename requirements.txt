@@ -2,3 +2,4 @@ jinja2
 sqlalchemy
 uvicorn[standard]
 fastapi[all]
+psycopg2
