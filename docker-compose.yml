@@ -9,6 +9,9 @@ services:
       ENV: "deployed"
       DOMAIN: "site-vote.rag-cloud.hosteur.com"
       DATABASE_URL: "postgresql://root:plopplop@database/sitevote"
+    depends_on:
+      database:
+        condition: service_healthy
 
   database:
     image: "postgres:15.2"
