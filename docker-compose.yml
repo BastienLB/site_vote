@@ -1,9 +1,10 @@
 version: "3.9"
 services:
   app:
-    image: registry.gurdil.fr:4443/site_vote:v1.0-amd64
+#    image: registry.gurdil.fr:4443/site_vote:v1.0-amd64
+    build: .
     ports:
-      - "8000:5000"
+      - "80:80"
     environment:
       DOMAIN: "site-vote.rag-cloud.hosteur.com"
       DATABASE_URL: "postgresql://root:plopplop@database/sitevote"
