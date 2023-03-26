@@ -5,6 +5,7 @@ services:
     ports:
       - "8000:5000"
     environment:
+      DOMAIN: "site-vote.rag-cloud.hosteur.com"
       DATABASE_URL: "postgresql://root:plopplop@database/sitevote"
 
   database:
