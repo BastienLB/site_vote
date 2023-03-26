@@ -6,9 +6,9 @@ services:
     ports:
       - "80:80"
     environment:
-      - ENV=deployed
-      - DOMAIN=site-vote.rag-cloud.hosteur.com
-      - DATABASE_URL=postgresql://root:plopplop@database/sitevote
+      - ENV="deployed"
+      - DOMAIN="site-vote.rag-cloud.hosteur.com"
+      - DATABASE_URL="postgresql://root:plopplop@database/sitevote"
     depends_on:
       database:
         condition: service_started
