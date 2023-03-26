@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  app:
+    build: .
+    ports:
+      - "8000:5000"
+    environment:
+      DATABASE_URL: "postgresql://root:plopplop@database/sitevote"
+
+  database:
+    image: "postgres:15.2"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: plopplop
+      POSTGRES_USER: root
+      POSTGRES_DB: sitevote

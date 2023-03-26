@@ -12,6 +12,10 @@ from starlette.responses import RedirectResponse
 from database import operations, models, schemas
 from database.database import SessionLocal, engine
 
+# Settings
+from configuration import Settings
+settings = Settings()
+
 models.Base.metadata.create_all(bind=engine)
 
 
@@ -46,7 +50,8 @@ async def startup_event(db: Session = get_db()):
 
 @app.get("/")
 async def root(request: Request, db: Session = Depends(get_db)):
-    domain = os.getenv("DOMAIN") if os.getenv("DOMAIN") is not None else "127.0.0.1:8000"
+    # domain = os.getenv("DOMAIN") if os.getenv("DOMAIN") is not None else "127.0.0.1:8000"
+    domain = settings.domain
     url = f"http://{domain}/vote"
     images = operations.get_images(db)
 
