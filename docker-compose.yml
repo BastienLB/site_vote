@@ -11,7 +11,7 @@ services:
       DATABASE_URL: "postgresql://root:plopplop@database/sitevote"
     depends_on:
       database:
-        condition: service_healthy
+        condition: service_started
 
   database:
     image: "postgres:15.2"
